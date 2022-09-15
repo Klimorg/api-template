@@ -23,6 +23,8 @@ jobs:
               run: |
                   pwd
                   cd ..
+                  python -m pip install copier
+                  copier api-template . --defaults
                   cd test-project-api
                   pwd
 
