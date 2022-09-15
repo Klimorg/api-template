@@ -2,7 +2,7 @@
 repo_name:
     type: str
     help: What is the name of the repository ?
-    default: "test-project"
+    default: test-project
 
 project_name:
     type: str
@@ -17,17 +17,17 @@ python_version:
 project_description:
     type: str
     help: A quick description of project
-    default: "Description"
+    default: Description
 
 author_family_name:
     type: str
     help: Author family name
-    default: "Doe"
+    default: Doe
 
 author_name:
     type: str
     help: Author name
-    default: "John"
+    default: John
 
 author_email:
     type: str
