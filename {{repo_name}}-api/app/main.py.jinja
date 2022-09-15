@@ -1,0 +1,74 @@
+from fastapi import FastAPI, status
+from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import RedirectResponse
+
+from app.config import settings
+from app.pydantic_models import DeploymentInfo
+from app.routes import first_route
+from app.logger import init_logging
+
+log = init_logging()
+
+__version__ = "0.0.1"
+
+
+app = FastAPI(
+    title="{{ repo_name|lower|replace('-', '_')|replace(' ', '_') }} API",
+    description="{{project_description}}",
+    version=__version__,
+)
+
+app.include_router(first_route.router, prefix="/first_route")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.on_event("startup")
+async def startup() -> None:
+    log.info("API Startup")
+
+
+@app.on_event("shutdown")
+async def shutdown() -> None:
+    log.info("API Shutdown")
+
+
+@app.get(
+    "/",
+    tags=["Démarrage"],
+    description="démarrage de l'API sur la page de documentation.",
+)
+def main():
+    return RedirectResponse(url="/docs")
+
+
+@app.get(
+    "/last_deployment_infos",
+    tags=["Démarrage"],
+    status_code=status.HTTP_200_OK,
+    response_model=DeploymentInfo,
+    description="Informations concernant le dernier déploiement du conteneur.",
+)
+def get_last_deployment_infos():
+
+    return DeploymentInfo(
+        deployment_commit=settings.DEPLOYMENT_COMMIT,
+        deployment_date=settings.DEPLOYMENT_DATE,
+    )
+
+
+@app.get(
+    "/healthcheck",
+    tags=["healthcheck"],
+    status_code=status.HTTP_200_OK,
+    response_description="ok",
+    summary="resume",
+)
+def get_api_status() -> str:
+    return "ok"

@@ -1,0 +1,35 @@
+---
+repo_name:
+    type: str
+    help: What is the name of the repository ?
+    default: "test-project"
+
+project_name:
+    type: str
+    help: what is the project name.
+    default: "{{ repo_name|lower|replace('-', '_')|replace(' ', '_') }}"
+
+python_version:
+    type: float
+    help: what is the python version of the project
+    default: 3.8
+
+project_description:
+    type: str
+    help: A quick description of project
+    default: "Description"
+
+author_family_name:
+    type: str
+    help: Author family name
+    default: "Doe"
+
+author_name:
+    type: str
+    help: Author name
+    default: "John"
+
+author_email:
+    type: str
+    help: What's your email (eg author@email.org) ?
+    default: "{{ author_family_name|lower }}.{{ author_name|lower|replace(' ', '-') }}@pm.me"

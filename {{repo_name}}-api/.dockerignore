@@ -1,0 +1,26 @@
+# directories
+.devcontainer
+.github*
+.pytest_cache*
+.vscode
+.mypy_cache
+.stack_prod*
+*.egg-info
+docs
+
+#files
+.coverage
+.gitignore
+.pre-commit.*
+docker-compose*
+Dockerfile*
+LICENSE
+makefile
+requirements-*
+setup.*
+mkdocs.yml
+
+
+__pycache__
+*.pyc
+*.md
