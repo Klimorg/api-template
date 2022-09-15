@@ -32,5 +32,5 @@ async def get_inference():
                 "inference_time": "15:07:18",
                 "num": 0,
             }
-        )
+        ),
     ]
