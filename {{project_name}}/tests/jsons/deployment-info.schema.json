@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/DeploymentInfo",
+    "definitions": {
+        "DeploymentInfo": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "deployment_commit": {
+                    "type": "string"
+                },
+                "deployment_date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "api_version": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "api_version",
+                "deployment_commit",
+                "deployment_date"
+            ],
+            "title": "DeploymentInfo"
+        }
+    }
+}

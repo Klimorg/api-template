@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.version]
-path = "app/main.py"
+path = "app/__init__.py"
 
 
 [project]
@@ -38,7 +38,6 @@ dev=[
     "pre-commit>=2.20.0",
     "radon>=5.1.0",
     "rope>=1.2.0",
-    "wemake-python-styleguide>=0.16.1",
 ]
 
 test = [
@@ -47,7 +46,8 @@ test = [
     "pytest-cov>=3.0.0",
     "pytest-xdist>=2.5.0",
     "pytest-mock>=3.8.2",
-    "tox>=3.25.1",
+    "httpx>=0.23.1",
+    "nox>=2022.11.21",
 ]
 
 doc = [

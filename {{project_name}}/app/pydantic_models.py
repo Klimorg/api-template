@@ -1,7 +1,7 @@
 from datetime import date, datetime, time
-
+import uuid
 import arrow
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, UUID4
 
 
 class Base(BaseModel):
@@ -10,14 +10,19 @@ class Base(BaseModel):
     num: int = Field(nullable=True)
 
 
-class BaseCreate(Base):
+class BaseCreateInput(Base):
     pass
+
+
+class BaseCreateOutput(Base):
+    id: UUID4 = Field(default_factory=uuid.uuid4)
 
 
 class BaseRead(Base):
-    pass
+    id: UUID4 = Field(default_factory=uuid.uuid4)
 
 
 class DeploymentInfo(BaseModel):
     deployment_commit: str
     deployment_date: datetime
+    api_version: str

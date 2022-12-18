@@ -70,6 +70,7 @@ bind = "0.0.0.0"
 #
 
 # workers = multiprocessing.cpu_count() * 2 + 1
+# if you're deploying in a k8s cluster, best practice is to let worker number to 1 avec work with pod replicates
 workers = 1
 # worker_connections = 1000
 timeout = 90

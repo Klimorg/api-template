@@ -2,14 +2,13 @@ from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
 
+from app import __version__
 from app.config import settings
 from app.pydantic_models import DeploymentInfo
 from app.routes import first_route
 from app.logger import init_logging
 
 log = init_logging()
-
-__version__ = "0.0.1"
 
 
 app = FastAPI(
@@ -49,7 +48,7 @@ def main():
 
 
 @app.get(
-    "/last_deployment_infos",
+    "/last_deployment_infos/",
     tags=["Démarrage"],
     status_code=status.HTTP_200_OK,
     response_model=DeploymentInfo,
@@ -60,11 +59,12 @@ def get_last_deployment_infos():
     return DeploymentInfo(
         deployment_commit=settings.DEPLOYMENT_COMMIT,
         deployment_date=settings.DEPLOYMENT_DATE,
+        api_version=str(__version__),
     )
 
 
 @app.get(
-    "/healthcheck",
+    "/healthcheck/",
     tags=["healthcheck"],
     status_code=status.HTTP_200_OK,
     response_description="ok",

@@ -9,3 +9,13 @@ venv:
 .PHONY: api-run
 api-run:
 	uvicorn app.main:app --reload --workers 1 --host 0.0.0.0
+
+
+.PHONY: tests
+tests:
+	python -m pytest -v --cov
+
+
+.PHONY: nox
+nox:
+	python -m nox

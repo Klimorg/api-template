@@ -1,0 +1,44 @@
+import nox
+
+from app import __version__
+
+
+@nox.session
+def tests(session):
+    session.install("-r", "requirements.txt")
+    session.install("-r", "requirements-test.txt")
+
+    session.run("python", "-m", "pytest", "-v", "--cov")
+
+
+@nox.session
+def build_doc(session):
+    session.install("-r", "requirements.txt")
+    session.install("-r", "requirements-doc.txt")
+    session.install(".", "--no-deps")
+
+    session.run("mkdocs", "build")
+
+
+@nox.session
+def build_wheel(session):
+    session.install("hatch")
+
+    session.run("hatch", "build")
+
+
+@nox.session
+def wheel_tests(session):
+    session.install("hatch")
+    session.install("-r", "requirements-test.txt")
+
+    session.run("hatch", "build")
+    session.run(
+        "python",
+        "-m",
+        "pip",
+        "install",
+        f"dist/{{project_name}}-{__version__}-py3-none-any.whl",
+    )
+    session.run("python", "-m", "pytest", "-v", "--cov")
+

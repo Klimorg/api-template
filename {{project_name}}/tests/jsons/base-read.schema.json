@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/ListBaseReadElement"
+    },
+    "definitions": {
+        "ListBaseReadElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "inference_date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "inference_time": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "num": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            },
+            "required": [
+                "id",
+                "inference_date",
+                "inference_time",
+                "num"
+            ],
+            "title": "ListBaseReadElement"
+        }
+    }
+}
