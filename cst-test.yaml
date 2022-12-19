@@ -1,0 +1,27 @@
+schemaVersion: '2.0.0'
+metadataTest:
+  # env:
+  #   - key: PATH
+  #     value: "/venv/bin.*"
+  #     isRegex: true
+  #   - key: PYTHONPATH
+  #     value: "/venv/lib/python3.9/site-packages/"
+  entrypoint: ["gunicorn", "-c", "app/gunicorn.py", "-k", "uvicorn.workers.UvicornWorker", "app.main:app"]
+  workdir: "/opt"
+commandTests:
+  - name: "bandit version"
+    command: "bandit"
+    args: ["--version"]
+    expectedOutput: ["bandit 1.7.0"]
+  - name: "bandit path"
+    command: "which"
+    args: ["bandit"]
+    expectedOutput: ["/venv/bin/bandit"]
+# fileExistenceTests:
+# - name: 'Certificat'
+#   path: '/etc/ssl/certs/my-cert.crt'
+#   shouldExist: false
+# fileContentTests:
+# - name: 'Linux Version'
+#   path: '/etc/os-release'
+#   expectedContents: ["VERSION_ID=3.14.2","NAME=\"Alpine Linux\""]

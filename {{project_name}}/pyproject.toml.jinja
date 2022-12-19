@@ -48,6 +48,7 @@ test = [
     "pytest-mock>=3.8.2",
     "httpx>=0.23.1",
     "nox>=2022.11.21",
+    "pytest-testinfra>=6.8.0",
 ]
 
 doc = [
@@ -67,6 +68,12 @@ testpaths = ["tests"]
 # make XPASS (“unexpectedly passing”) result to fail the test suite
 xfail_strict = true
 addopts = "-v -n auto -l -rsxX --strict-markers --tb=short --doctest-modules --cov --cov-append --cov-report=xml:coverage.xml --cov-report=html:htmlcov --junitxml=unit-testresults.xml"
+markers = [
+    "unit: marks tests as unit tests",
+    "composant: marks as composant tests, ie need more than one function",
+    "integration: marks as integration tests",
+    "infra: marks as tests about containers and infrastructure",
+]
 
 [tool.isort]
 multi_line_output = 3
