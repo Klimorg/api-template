@@ -4,7 +4,7 @@ copier==7.0.1
 darglint==1.8.1
 flake8==5.0.4
 hatch==1.6.3
-isort==5.10.1
+isort==5.11.3
 mypy==0.991
 # precommit action
 pre-commit==2.20.0
