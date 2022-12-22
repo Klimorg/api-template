@@ -6,6 +6,11 @@ venv:
 	python3 -m pip install -r requirements-dev.txt
 	python3 -m pip install -r requirements-test.txt
 
+install-reqs:
+	python3 -m pip install -r requirements.txt
+	python3 -m pip install -r requirements-dev.txt
+	python3 -m pip install -r requirements-test.txt
+
 .PHONY: api-run
 api-run:
 	uvicorn app.main:app --reload --workers 1 --host 0.0.0.0

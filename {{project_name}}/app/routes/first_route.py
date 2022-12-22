@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import APIRouter, status
 
-from app.pydantic_models import BaseCreateInput, BaseCreateOutput, BaseRead
+from app.models.pydantic_models import BaseCreateInput, BaseCreateOutput, BaseRead
 
 router = APIRouter()
 
