@@ -25,13 +25,13 @@ jobs:
                   cd ..
                   python -m pip install copier
                   copier api-template . --defaults
-                  cd test-project-api
+                  cd test-project
                   pwd
 
             - name: Install Python dependencies
               run: |
                   cd ..
-                  cd test-project-api
+                  cd test-project
                   python -m pip install --upgrade pip
                   python -m pip install -r requirements.txt
                   python -m pip install -r requirements-test.txt
@@ -39,7 +39,7 @@ jobs:
             - name: Run test suite
               run: |
                   cd ..
-                  cd test-project-api
+                  cd test-project
                   python -m pytest -v --cov
 
             # - name: Upload coverage to Codecov
