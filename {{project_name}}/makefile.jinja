@@ -24,3 +24,11 @@ tests:
 .PHONY: nox
 nox:
 	python -m nox
+
+.PHONY: lint
+lint:
+	black .
+	isort .
+	flake8 .
+	mypy .
+	interrogate -vv -i .

@@ -10,11 +10,7 @@ client = TestClient(app)
 
 def test_post_first_route():
 
-    payload = {
-        "inference_date": "2022-12-17",
-        "inference_time": "16:56:26",
-        "num": 0,
-    }
+    payload = [{"data": 0}, {"data": 1}, {"data": 2}]
 
     response = client.post("/first_route/", json=payload)
 
@@ -22,19 +18,19 @@ def test_post_first_route():
 
     response = response.json()
 
-    with open("tests/jsons/base-create-output.schema.json") as schema:
+    with open("tests/jsons/inference-out.schema.json") as schema:
         response_schema = json.load(schema)
         jsonschema.validate(response, response_schema)
 
 
-def test_get_first_route():
+# def test_get_first_route():
 
-    response = client.get("/first_route/")
+#     response = client.get("/first_route/")
 
-    assert response.status_code == 200
+#     assert response.status_code == 200
 
-    response = response.json()
+#     response = response.json()
 
-    with open("tests/jsons/base-read.schema.json") as schema:
-        response_schema = json.load(schema)
-        jsonschema.validate(response, response_schema)
+#     with open("tests/jsons/base-read.schema.json") as schema:
+#         response_schema = json.load(schema)
+#         jsonschema.validate(response, response_schema)

@@ -1,8 +1,11 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/BaseCreateOutput",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/InferenceOutElement"
+    },
     "definitions": {
-        "BaseCreateOutput": {
+        "InferenceOutElement": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -14,12 +17,12 @@
                     "type": "string",
                     "format": "time"
                 },
-                "num": {
-                    "type": "integer"
-                },
                 "id": {
                     "type": "string",
                     "format": "uuid"
+                },
+                "num": {
+                    "type": "integer"
                 }
             },
             "required": [
@@ -28,7 +31,7 @@
                 "inference_time",
                 "num"
             ],
-            "title": "BaseCreateOutput"
+            "title": "InferenceOutElement"
         }
     }
 }

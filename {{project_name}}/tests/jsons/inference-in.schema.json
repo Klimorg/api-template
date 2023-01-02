@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/InferenceInElement"
+    },
+    "definitions": {
+        "InferenceInElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "data": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "data"
+            ],
+            "title": "InferenceInElement"
+        }
+    }
+}
