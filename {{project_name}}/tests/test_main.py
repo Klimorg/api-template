@@ -2,16 +2,19 @@ from fastapi.testclient import TestClient
 import json
 import jsonschema
 from app.main import app
+import pytest
 
-client = TestClient(app)
+@pytest.fixture
+def client():
+    return TestClient(app)
 
 
-def test_read_main():
+def test_read_main(client: TestClient)->None:
     response = client.get("/healthcheck/")
     assert response.status_code == 200
 
 
-def test_get_last_deployment_infos():
+def test_get_last_deployment_infos(client: TestClient)->None:
     response = client.get("/last_deployment_infos/")
     assert response.status_code == 200
 
