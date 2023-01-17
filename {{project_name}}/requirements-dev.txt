@@ -11,4 +11,4 @@ pre-commit==2.21.0
 # code quality infos
 radon==5.1.0
 # refactoring
-rope==1.6.0
+rope==1.7.0
