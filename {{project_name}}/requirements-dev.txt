@@ -7,7 +7,7 @@ hatch==1.6.3
 isort==5.11.4
 mypy==0.991
 # precommit action
-pre-commit==2.21.0
+pre-commit==3.0.2
 # code quality infos
 radon==5.1.0
 # refactoring
