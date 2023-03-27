@@ -9,6 +9,6 @@ mypy==0.991
 # precommit action
 pre-commit==2.21.0
 # code quality infos
-radon==5.1.0
+radon==6.0.1
 # refactoring
 rope==1.6.0
